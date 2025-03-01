@@ -7,13 +7,18 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
+    @State private var isAuthenticated = false
     
     
     var body: some View {
-        VStack(alignment: .leading) {
-           
-        }.padding()
+        if isAuthenticated {
+            ListView()
+        }else{
+            SignInLayout(isAuthenticated: $isAuthenticated)
+        }
     }
 }
 
