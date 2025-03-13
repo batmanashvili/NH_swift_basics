@@ -9,6 +9,8 @@ import PhotosUI
 import SwiftUI
 
 struct CreateReceipt: View {
+    @EnvironmentObject var recipeViewModel: RecipeViewModel
+
     @State private var title: String = ""
     @State private var description: String = ""
     @State private var cookingTime: String = ""
@@ -128,7 +130,12 @@ struct CreateReceipt: View {
         showDescriptionError = description.isEmpty
 
         if !title.isEmpty && !description.isEmpty {
-
+            let newRecipe = RecipeModel(
+                images: selectedImages, title: title,
+                description: description,
+                cookingTime: cookingTime
+            )
+            recipeViewModel.addRecipe(newRecipe)
         }
     }
 }

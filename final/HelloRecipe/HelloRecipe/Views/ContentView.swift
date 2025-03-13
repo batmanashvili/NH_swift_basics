@@ -2,39 +2,19 @@
 //  ContentView.swift
 //  HelloRecipe
 //
-//  Created by Beka Batmanashvili on 10.03.25.
+//  Created by Beka Batmanashvili on 13.03.25.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var recipeViewModel = RecipeViewModel()
+
     var body: some View {
-        NavigationView{
-            VStack{
-                HStack{
-                    Spacer()
-                    NavigationLink(destination: Receipt()){
-                        Image(systemName: "plus")
-                            .imageScale(.large)
-                            .foregroundStyle(.tint)
-                        Text("Add New")
-                    }.padding(.trailing)
-                }
-                Spacer()
-                VStack(alignment: .leading) {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text("Hello, world!")
-                    NavigationLink(destination: Receipt()){
-                        Text("press me")
-                    }
-                }
-                .padding()
-                Spacer()
-            }
+        NavigationView {
+            RecipeListView()
         }
-        
+        .environmentObject(recipeViewModel)
     }
 }
 
