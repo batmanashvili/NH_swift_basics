@@ -12,7 +12,6 @@ struct RecipeListView: View {
 
     var body: some View {
         NavigationView {
-
             ScrollView {
                 HStack {
                     Spacer()
@@ -56,4 +55,5 @@ struct RecipeListView: View {
 
 #Preview {
     RecipeListView()
+        .environmentObject(RecipeViewModel())
 }
